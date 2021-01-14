@@ -37,9 +37,9 @@ const Lang = () => {
             es.style.bottom = "140px";
             ca.style.bottom = "80px";
 
-            ca.style.zIndex = "1px";
-            es.style.zIndex = "1px";
-            en.style.zIndex = "1px";
+            ca.style.zIndex = "1";
+            es.style.zIndex = "1";
+            en.style.zIndex = "1";
             
             deployed = true;
           }
@@ -65,11 +65,7 @@ const Lang = () => {
             
             [].forEach.call(languages, function (el) {
                 el.style.display = 'block';
-                console.log("hi")
             });
-        
-
-            console.log(e + " " +languages)
 
             deployed = false;
           }
@@ -89,12 +85,12 @@ const Lang = () => {
         <div>
             <Lang 
                 className="lang" 
-                id="ca" 
-            >CA</Lang>
+                id="es" 
+            >ES</Lang>
             <Lang 
                 className="lang" 
-                id="es"
-            >ES</Lang>
+                id="ca"
+            >CA</Lang>
             <Lang 
                 className="lang" 
                 id="en"

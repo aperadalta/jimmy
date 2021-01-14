@@ -1,4 +1,4 @@
-import React, {Fragment} from 'react';
+import React, {Fragment, useEffect} from 'react';
 import styled from 'styled-components';
 import '../index.css';
 import style from '../style';
@@ -9,16 +9,26 @@ const Header = () => {
         display: none;
 
         @media (max-width: 768px) {
-            display: block;
+            display: flex;
+            align-items: center;
+            justify-content: space-around;
+
             position: fixed;
-            top: 30px;
-            right: 30px;
+            top: 0px;
+            left: 0px;
             z-index: 99;
+            width: 100%;
+            height: 100px;
+            background-color: ${style.mainColor};
             color: white;
+
+            img{
+                height: 90px;
+                width: auto;
+            }
         }
     
     `
-
     const Header = styled.header`
         position: fixed;
         top: 0;
@@ -38,6 +48,7 @@ const Header = () => {
         @media (max-width: 768px) {
             flex-direction: column;
             padding: 50px 0;
+            top: -550px;
         }
     `
     const Ul = styled.ul`
@@ -45,7 +56,7 @@ const Header = () => {
         list-style-type: none;
         cursor: pointer;
         li{
-            height: 80px;
+            height: 100px;
             width: 100%;
             display: flex;
             align-items: center;
@@ -63,27 +74,61 @@ const Header = () => {
             margin: 20px 0;
         }
     `
-    var prevScrollpos = window.pageYOffset;
+    // END OF CSS
     
-    window.onscroll = function() {
-    var currentScrollPos = window.pageYOffset;
-        if (prevScrollpos > currentScrollPos) {
-            document.getElementById("navbar").style.top = "0";
-        } else {
-            document.getElementById("navbar").style.top = "-80px";
+
+    useEffect(()=>{
+        var prevScrollpos = window.pageYOffset;
+        var windowWidth = window.innerWidth;
+
+        function navbarMove(height){
+            [].forEach.call(navbarLang, function (el) {
+                el.style.top = height;
+            });
         }
-        prevScrollpos = currentScrollPos;
-    }
+        
+        // SCROLL UP NAVBAR
+        const navbarLang = document.getElementsByClassName('navbarLang');
+
+        if(windowWidth > 768){
+            window.onscroll = function() {
+                var currentScrollPos = window.pageYOffset;
+                if (prevScrollpos > currentScrollPos) {
+                    navbarMove("0");
+                } else {
+                    navbarMove("-100px");
+                }
+                prevScrollpos = currentScrollPos;
+            }
+        }
+        
+        // RESPONSIVE NAVBAR
+        const responsiveNav = document.getElementById('responsiveNav');
+        var responsiveNavPosition = true;
+
+        responsiveNav.addEventListener("click", ()=> {
+            if(responsiveNavPosition){
+                navbarMove("-35px");
+                responsiveNavPosition = false;
+            }else{
+                navbarMove("-500px");
+                responsiveNavPosition = true;
+            }
+        })
+    }, [])
+    
+    
 
     return ( 
         <Fragment>
-            <ResponsiveX>
-                Hi
+            <ResponsiveX id="responsiveNav">
+                <img src={foto} alt="logo"></img>
+                <div>Hi</div>
             </ResponsiveX>
         {/* NAVBAR IN SPANISH*/}
             <div className="ES">
-                <Header id="navbar" className = "center">
-                    <a href="#mainPage" className="ES">
+                <Header id="navbar" className = "center navbarLang">
+                    <a href="#mainPage" className="ES ">
                         <img src={foto} alt="logo"></img>
                     </a>
                     <nav>
@@ -105,7 +150,7 @@ const Header = () => {
 
         {/* NAVBAR IN CATALAN*/}
             <div className="CA">
-                <Header id="navbar" className = "center">
+                <Header id="navbar" className = "center navbarLang">
                     <a href="#mainPage"><img src={foto} alt="logo"></img></a>
                     <nav>
                         <Ul className = "center">
@@ -126,7 +171,7 @@ const Header = () => {
 
         {/* NAVBAR IN ENGLISH*/}
             <div className="EN">
-                <Header id="navbar" className = "center">
+                <Header id="navbar" className = "center navbarLang">
                     <a href="#mainPage" ><img src={foto} alt="logo"></img></a>
                     <nav>
                         <Ul className = "center">
