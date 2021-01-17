@@ -1,12 +1,38 @@
 import React, {Fragment, useEffect} from 'react';
+import {Link} from 'react-router-dom';
 import styled from 'styled-components';
+
 import '../index.css';
 import style from '../style';
+
 import foto from '../fotos/logo.png'
 
 const Header = () => {
     const ResponsiveX = styled.div`
         display: none;
+
+        #openNav{
+            cursor: pointer;
+            position: relative;
+            div{
+                width: 23px;
+                height: 2px;
+                background-color: white;
+                margin: 4px 0;
+                position: absolute;
+            }
+            div:nth-child(1){
+                top: -7px;
+                transition: transform 0.5s, top .5s;
+            }
+            div:nth-child(2){
+                transition: opacity 0.5s;
+            }
+            div:nth-child(3){
+                top: 7px;
+                transition: transform 0.5s, top .5s;
+            }
+        }
 
         @media (max-width: 768px) {
             display: flex;
@@ -27,7 +53,7 @@ const Header = () => {
                 width: auto;
             }
         }
-    
+        
     `
     const Header = styled.header`
         position: fixed;
@@ -103,7 +129,7 @@ const Header = () => {
         }
         
         // RESPONSIVE NAVBAR
-        const responsiveNav = document.getElementById('responsiveNav');
+        const responsiveNav = document.getElementById('openNav');
         var responsiveNavPosition = true;
 
         responsiveNav.addEventListener("click", ()=> {
@@ -115,6 +141,30 @@ const Header = () => {
                 responsiveNavPosition = true;
             }
         })
+
+        // ANIMATE RESPONSIVE BUTTON
+        const respButton = document.getElementById('openNav'),
+              first = document.querySelector("#openNav div:nth-child(1)"),
+              second = document.querySelector("#openNav div:nth-child(2)"),
+              third = document.querySelector("#openNav div:nth-child(3)");
+
+        var downOrUp = true;
+        respButton.addEventListener("click", ()=>{
+            
+            if(downOrUp){
+                first.style.cssText = "transform: rotate(45deg); top: 0";
+                second.style.opacity = "0";
+                third.style.cssText = "transform: rotate(-45deg); top: 0";
+                downOrUp = false;
+            }else{
+                first.style.cssText = "transform: rotate(0deg); top: -7px";
+                second.style.opacity = "1";
+                third.style.cssText = "transform: rotate(0deg); top: 7px";
+                downOrUp = true;
+            }
+            
+        })
+
     }, [])
     
     
@@ -123,20 +173,25 @@ const Header = () => {
         <Fragment>
             <ResponsiveX id="responsiveNav">
                 <img src={foto} alt="logo"></img>
-                <div>Hi</div>
+                <div id="openNav">
+                    <div></div>
+                    <div></div>
+                    <div></div>
+                </div>
             </ResponsiveX>
+
         {/* NAVBAR IN SPANISH*/}
             <div className="ES">
                 <Header id="navbar" className = "center navbarLang">
                     <a href="#mainPage" className="ES ">
-                        <img src={foto} alt="logo"></img>
+                        <Link to='/'><img src={foto} alt="logo"></img></Link>
                     </a>
                     <nav>
                         <Ul className = "center">
-                            <li><p>Acerca de</p></li>
-                            <li><p>Videos</p></li>
-                            <li><p>Clases</p> </li>
-                            <li><p>Contacto</p></li>
+                            <Link to='/about'><li><p>Acerca de</p></li></Link>
+                            <Link to='/videos'><li><p>Videos</p></li></Link>
+                            <Link to='/videos'><li><p>Clases</p> </li></Link>
+                            <Link to='/contact'><li><p>Contacto</p></li></Link>
                         </Ul>
                     </nav>
                     <nav >
@@ -151,13 +206,13 @@ const Header = () => {
         {/* NAVBAR IN CATALAN*/}
             <div className="CA">
                 <Header id="navbar" className = "center navbarLang">
-                    <a href="#mainPage"><img src={foto} alt="logo"></img></a>
+                    <a href="#mainPage"><Link to='/'><img src={foto} alt="logo"></img></Link></a>
                     <nav>
                         <Ul className = "center">
-                            <li><p>Acerca de</p></li>
-                            <li><p>Videos</p></li>
-                            <li><p>Clases</p> </li>
-                            <li><p>Contacto</p></li>
+                            <Link to='/about'><li><p>Sobre mi</p></li></Link>
+                            <Link to='/videos'><li><p>Videos</p></li></Link>
+                            <Link to='/videos'><li><p>Clases</p> </li></Link>
+                            <Link to='/contact'><li><p>Contacte</p></li></Link>
                         </Ul>
                     </nav>
                     <nav >
@@ -172,13 +227,13 @@ const Header = () => {
         {/* NAVBAR IN ENGLISH*/}
             <div className="EN">
                 <Header id="navbar" className = "center navbarLang">
-                    <a href="#mainPage" ><img src={foto} alt="logo"></img></a>
+                    <a href="#mainPage" ><Link to='/'><img src={foto} alt="logo"></img></Link></a>
                     <nav>
                         <Ul className = "center">
-                            <li><p>About</p></li>
-                            <li><p>Videos</p></li>
-                            <li><p>Classes</p> </li>
-                            <li><p>Contact</p></li>
+                        <Link to='/about'><li><p>About</p></li></Link>
+                            <Link to='/videos'><li><p>Videos</p></li></Link>
+                            <Link to='/videos'><li><p>Classes</p> </li></Link>
+                            <Link to='/contact'><li><p>Contact</p></li></Link>
                         </Ul>
                     </nav>
                     <nav >
