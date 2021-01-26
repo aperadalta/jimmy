@@ -33,7 +33,7 @@ nav a{
 #en{z-index: 2}
 #es{z-index: 3}
 
-#mainPage{
+#mainPage, #letstry{
   width: 100vw;
   height: 100vh;
   background-image: url("./fotos/mainpage.jpg");
@@ -41,6 +41,27 @@ nav a{
   background-position: center; 
   background-repeat: no-repeat; 
   background-size: cover; 
+}
+
+
+
+@media (max-width: 768px) {
+  #mainPage{
+    background-position: 30% 30%; 
+  }
+
+  #mainPage h1{
+    font-size: 3rem;
+    margin-left: 13%;
+    margin-top: 80%;
+    padding: 50px 80px;
+  }
+}
+
+#letstry{
+  background-position: 40% 100%; 
+  margin-top: -100vh;
+  background-image: url("./fotos/letstry-01.png");
 }
 
 footer{

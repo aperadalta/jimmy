@@ -61,7 +61,16 @@ const Header = () => {
         font-size: 1.1rem;
         transition: top 0.3s;
         z-index: 3;
-        background-color: ${style.mainColor};
+        text-align: center;
+
+        background:
+        radial-gradient(${style.mainColor} 15%, transparent 16%) 0 0,
+        radial-gradient(${style.mainColor} 15%, transparent 16%) 8px 8px,
+        radial-gradient(rgba(255,255,255,.1) 15%, transparent 20%) 0 1px,
+        radial-gradient(rgba(255,255,255,.1) 15%, transparent 20%) 8px 9px;
+        background-color:${style.mainColor};
+       
+        background-size:16px 16px;
         width: 100%;
         color: white;
         font-weight: 700;
@@ -167,7 +176,6 @@ const Header = () => {
 
     }, [])
     
-    
 
     return ( 
         <Fragment>
@@ -195,8 +203,8 @@ const Header = () => {
                         </Ul>
                     </nav>
                     <nav >
-                        <a href="https://www.instagram.com/monetsbrunch/"><i className="fa fa-instagram" ></i></a>
-                        <a href="https://www.instagram.com/monetsbrunch/"><i className="fa fa-facebook" ></i></a>
+                        <a href="https://www.instagram.com/jimmyplaxen/"><i className="fa fa-instagram" ></i></a>
+                        <a href="https://www.facebook.com/JIMMY-PI%C3%91OL-727444077620220"><i className="fa fa-facebook" ></i></a>
                         <a href="https://www.instagram.com/monetsbrunch/"><i className="fa fa-youtube-play" ></i></a>
                         <a href="mailto:monetsbrunch@gmail.com"><i className="fa fa-envelope" ></i></a>
                     </nav> 
@@ -216,8 +224,8 @@ const Header = () => {
                         </Ul>
                     </nav>
                     <nav >
-                        <a href="https://www.instagram.com/monetsbrunch/"><i className="fa fa-instagram" ></i></a>
-                        <a href="https://www.instagram.com/monetsbrunch/"><i className="fa fa-facebook" ></i></a>
+                        <a href="https://www.instagram.com/jimmyplaxen/"><i className="fa fa-instagram" ></i></a>
+                        <a href="https://www.facebook.com/JIMMY-PI%C3%91OL-727444077620220"><i className="fa fa-facebook" ></i></a>
                         <a href="https://www.instagram.com/monetsbrunch/"><i className="fa fa-youtube-play" ></i></a>
                         <a href="mailto:monetsbrunch@gmail.com"><i className="fa fa-envelope" ></i></a>
                     </nav> 
@@ -237,8 +245,8 @@ const Header = () => {
                         </Ul>
                     </nav>
                     <nav >
-                        <a href="https://www.instagram.com/monetsbrunch/"><i className="fa fa-instagram" ></i></a>
-                        <a href="https://www.instagram.com/monetsbrunch/"><i className="fa fa-facebook" ></i></a>
+                        <a href="https://www.instagram.com/jimmyplaxen/"><i className="fa fa-instagram" ></i></a>
+                        <a href="https://www.facebook.com/JIMMY-PI%C3%91OL-727444077620220"><i className="fa fa-facebook" ></i></a>
                         <a href="https://www.instagram.com/monetsbrunch/"><i className="fa fa-youtube-play" ></i></a>
                         <a href="mailto:monetsbrunch@gmail.com"><i className="fa fa-envelope" ></i></a>
                     </nav> 

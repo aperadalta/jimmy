@@ -14,6 +14,7 @@ const Lang = () => {
         padding-top: 16px;
         border-radius: 50%;
         right: 30px;
+        text-align: center;
         z-index: 5;
         border: 2px solid white;;
         cursor: pointer;
